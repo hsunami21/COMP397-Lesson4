@@ -10,7 +10,7 @@ var objects;
         __extends(Button, _super);
         // CONSTRUCTOR METHOD +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         function Button(pathString, x, y) {
-            _super.call(this, "../../Assets/images/" + pathString + ".png");
+            _super.call(this, assets.getResult(pathString));
             this.x = x;
             this.y = y;
             this.width = 150;

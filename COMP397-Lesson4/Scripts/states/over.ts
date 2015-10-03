@@ -28,6 +28,7 @@
 
 
         public update(): void {
+            this._levelLabel.rotation += 5;
         }
 
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++

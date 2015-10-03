@@ -32,6 +32,7 @@
         // PRIVATE METHODS
         // EVENT HANDLERS
         private _clickStartButton(event: createjs.MouseEvent): void {
+            createjs.Sound.play("Yay");
             changeState(config.PLAY_STATE);
         }
     }

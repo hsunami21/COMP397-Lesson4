@@ -28,6 +28,7 @@ var states;
         // PRIVATE METHODS
         // EVENT HANDLERS
         Menu.prototype._clickStartButton = function (event) {
+            createjs.Sound.play("Yay");
             changeState(config.PLAY_STATE);
         };
         return Menu;

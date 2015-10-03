@@ -22,12 +22,27 @@ var stage: createjs.Stage;
 var stats: Stats;
 var state: number;
 var currentState: objects.Scene; // alias for current state
+var assets: createjs.LoadQueue;
 
 // GAME OBJECTS
 var menu: states.Menu;
 var game: states.Game;
 var over: states.Over;
 
+// MANIFEST OF ALL ASSETS
+var manifest = [
+    { id: "BackButton", src: "../../Assets/images/BackButton.png" },
+    { id: "NextButton", src: "../../Assets/images/NextButton.png" }, 
+    { id: "StartButton", src: "../../Assets/images/StartButton.png" },
+    { id: "Yay", src: "../../Assets/audio/yay.ogg" }
+];
+
+function preload(): void {
+    assets = new createjs.LoadQueue();
+    assets.installPlugin(createjs.Sound);
+    assets.on("complete", init, this);
+    assets.loadManifest(manifest);
+}
 
 function init(): void {
     console.log("Game Started...");
@@ -47,8 +62,8 @@ function init(): void {
 function gameLoop(event: createjs.Event): void {
     stats.begin(); // start counting
 
-    currentState.update(); // redraw/refresh stage every frame
-    stage.update(); 
+    currentState.update(); // calling State's update method
+    stage.update(); // redraw/refresh stage every frame
 
     stats.end(); // stop counting
 }

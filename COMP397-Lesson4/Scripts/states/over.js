@@ -24,6 +24,7 @@ var states;
             stage.addChild(this);
         };
         Over.prototype.update = function () {
+            this._levelLabel.rotation += 5;
         };
         // PRIVATE METHODS ++++++++++++++++++++++++++++++++++++++++++++++
         // Callback function / Event Handler for Back Button Click
