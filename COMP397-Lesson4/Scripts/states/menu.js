@@ -28,9 +28,10 @@ var states;
         // PRIVATE METHODS
         // EVENT HANDLERS
         Menu.prototype._clickStartButton = function (event) {
-            this._helloLabel.text = "Clicked";
+            changeState(config.PLAY_STATE);
         };
         return Menu;
     })(objects.Scene);
     states.Menu = Menu;
 })(states || (states = {}));
+//# sourceMappingURL=menu.js.map

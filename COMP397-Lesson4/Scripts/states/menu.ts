@@ -32,7 +32,7 @@
         // PRIVATE METHODS
         // EVENT HANDLERS
         private _clickStartButton(event: createjs.MouseEvent): void {
-            this._helloLabel.text = "Clicked";
+            changeState(config.PLAY_STATE);
         }
     }
 

@@ -9,6 +9,8 @@
 /// <reference path="../objects/label.ts" />
 /// <reference path="../objects/button.ts" />
 /// <reference path="../objects/scene.ts" />
+/// <reference path="../states/over.ts" />
+/// <reference path="../states/game.ts" />
 /// <reference path="../states/menu.ts" />
 // GLOBAL GAME FRAMEWORK VARIABLES
 var canvas;
@@ -18,6 +20,8 @@ var state;
 var currentState; // alias for current state
 // GAME OBJECTS
 var menu;
+var game;
+var over;
 function init() {
     console.log("Game Started...");
     canvas = document.getElementById("canvas"); // reference to canvas element
@@ -27,7 +31,7 @@ function init() {
     createjs.Ticker.on("tick", gameLoop); // update gameLoop every frame
     setupStats(); // sets up our stats counter
     state = config.MENU_STATE; // set initial state
-    changeState(); // call main game function
+    changeState(state); // call main game function
 }
 // MAIN GAME LOOP
 function gameLoop(event) {
@@ -46,21 +50,29 @@ function setupStats() {
     document.body.appendChild(stats.domElement);
 }
 // STATE MACHINE
-function changeState() {
+function changeState(state) {
     // launch various scenes
     switch (state) {
         case config.MENU_STATE:
             // show menu scene
+            stage.removeAllChildren();
             menu = new states.Menu();
-            console.log(menu);
             currentState = menu;
             break;
         case config.PLAY_STATE:
             // show play scene
+            stage.removeAllChildren();
+            game = new states.Game();
+            currentState = game;
             break;
         case config.OVER_STATE:
             // show game over scene
+            stage.removeAllChildren();
+            over = new states.Over();
+            currentState = over;
             break;
     }
     currentState.start();
+    console.log(currentState.numChildren);
 }
+//# sourceMappingURL=game.js.map
